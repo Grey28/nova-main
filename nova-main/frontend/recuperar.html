@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaFit | Recuperar contraseña</title>
 
- <link rel="stylesheet" href="../style/recuperar.css">
+    <link rel="stylesheet" href="../style/recuperar.css">
+    <link rel="stylesheet" href="../style/auth.css">
 </head>
 
-<body>
+<body data-page="recover">
 
     <div class="contenedor">
 
@@ -17,21 +18,24 @@
 
         <p>
             Escribe el correo electrónico asociado a tu cuenta.
-            Te enviaremos un enlace para restablecer tu contraseña.
+            Te enviaremos un código para restablecer tu contraseña.
         </p>
 
-        <form action="codigo.html">
+        <form id="recoverForm" action="codigo.html">
 
-            <label>Correo electrónico</label>
+            <label for="recoverEmail">Correo electrónico</label>
 
             <input
+                id="recoverEmail"
+                name="email"
                 type="email"
                 placeholder="correo@ejemplo.com"
+                autocomplete="email"
                 required
             >
 
             <button type="submit">
-                Enviar codigo
+                Enviar código
             </button>
 
         </form>
@@ -45,6 +49,11 @@
         </div>
 
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/supabase-client.js"></script>
+    <script src="./js/auth.js"></script>
 
 </body>
 

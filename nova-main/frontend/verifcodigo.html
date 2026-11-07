@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>NovaFit | Nueva contraseña</title>
- <link rel="stylesheet" href="../style/verifcodigo.css">
-    
+    <link rel="stylesheet" href="../style/verifcodigo.css">
+    <link rel="stylesheet" href="../style/auth.css">
 
 </head>
 
-<body>
+<body data-page="reset-password">
 
     <div class="contenedor">
 
@@ -24,21 +24,29 @@
 
         </p>
 
-        <form action="inicio.html">
+        <form id="resetForm" action="inicio.html">
 
-            <label>Nueva contraseña</label>
+            <label for="newPassword">Nueva contraseña</label>
 
             <input
+                id="newPassword"
+                name="password"
                 type="password"
                 placeholder="********"
+                autocomplete="new-password"
+                minlength="6"
                 required
             >
 
-            <label>Confirmar contraseña</label>
+            <label for="confirmPassword">Confirmar contraseña</label>
 
             <input
+                id="confirmPassword"
+                name="password_confirmation"
                 type="password"
                 placeholder="********"
+                autocomplete="new-password"
+                minlength="6"
                 required
             >
 
@@ -59,6 +67,11 @@
         </div>
 
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/supabase-client.js"></script>
+    <script src="./js/auth.js"></script>
 
 </body>
 

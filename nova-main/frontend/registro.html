@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaFit | Crear cuenta</title>
- <link rel="stylesheet" href="../style/registro.css">
-    
+    <link rel="stylesheet" href="../style/registro.css">
+    <link rel="stylesheet" href="../style/auth.css">
 </head>
 
-<body>
+<body data-page="register">
 
     <div class="contenedor">
 
@@ -16,16 +16,16 @@
 
         <p>Crea tu cuenta y comienza tu transformación.</p>
 
-        <form action="inicio.html">
+        <form id="registerForm" action="inicio.html">
 
-            <label>Nombre completo</label>
-            <input type="text" placeholder="Ingresa tu nombre" required>
+            <label for="registerName">Nombre completo</label>
+            <input id="registerName" name="full_name" type="text" placeholder="Ingresa tu nombre" autocomplete="name" required>
 
-            <label>Correo electrónico</label>
-            <input type="email" placeholder="correo@ejemplo.com" required>
+            <label for="registerEmail">Correo electrónico</label>
+            <input id="registerEmail" name="email" type="email" placeholder="correo@ejemplo.com" autocomplete="email" required>
 
-            <label>Contraseña</label>
-            <input type="password" placeholder="********" required minlength="6">
+            <label for="registerPassword">Contraseña</label>
+            <input id="registerPassword" name="password" type="password" placeholder="********" autocomplete="new-password" required minlength="6">
 
             <button type="submit">
                 Crear cuenta
@@ -39,6 +39,11 @@
         </div>
 
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/supabase-client.js"></script>
+    <script src="./js/auth.js"></script>
 
 </body>
 </html>
