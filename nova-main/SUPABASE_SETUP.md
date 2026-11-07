@@ -112,3 +112,26 @@ frontend/js/dashboard.js         -> sesión, perfil y datos del dashboard
 supabase/schema.sql              -> tablas, índices, triggers y políticas RLS
 style/auth.css                   -> mensajes y avisos de autenticación
 ```
+
+## 8. Publicar en GitHub Pages
+
+El repositorio incluye el workflow `.github/workflows/deploy-pages.yml`, que publica `frontend/` y `style/` mediante GitHub Actions.
+
+1. En GitHub ve a **Settings > Pages**.
+2. En **Build and deployment > Source**, selecciona **GitHub Actions**.
+3. Haz push a la rama `main` o ejecuta el workflow manualmente desde **Actions**.
+
+La URL del sitio será:
+
+```text
+https://grey28.github.io/nova-main/
+```
+
+Después de publicar, actualiza en Supabase **Authentication > URL Configuration**:
+
+- **Site URL**: `https://grey28.github.io/nova-main/`
+- **Redirect URLs**:
+  - `https://grey28.github.io/nova-main/frontend/**`
+  - `http://localhost:5500/frontend/**` (para desarrollo local)
+
+Así funcionarán el registro, la confirmación por correo y la recuperación de contraseña tanto en local como en producción.
