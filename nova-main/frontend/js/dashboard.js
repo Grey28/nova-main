@@ -10,6 +10,7 @@
 
   var currentUser = null;
   var routinesCache = [];
+  var onboardingShown = false;
   var AVATAR_PLACEHOLDER = './assets/avatar-placeholder.svg';
 
   var GOALS = ['Mejorar condición física', 'Ganar masa muscular', 'Perder grasa'];
@@ -84,24 +85,36 @@
       var fullName = $('profileNameInput').value.trim();
       var goal = $('profileGoal').value;
       var level = $('profileLevel').value;
+      var heightInput = $('profileHeightInput');
+      var heightRaw = heightInput ? String(heightInput.value).trim() : '';
+      var height = heightRaw ? Number.parseFloat(heightRaw.replace(',', '.')) : null;
 
       if (!fullName) {
         toast('Escribe tu nombre.', 'error');
         return;
       }
 
+      if (height !== null && (!Number.isFinite(height) || height < 100 || height > 250)) {
+        toast('La altura debe estar entre 100 y 250 cm.', 'error');
+        return;
+      }
+
       button.disabled = true;
-      var result = await db.from('profiles').upsert({
+      var payload = {
         id: currentUser.id,
         full_name: fullName,
         goal: goal,
         level: level,
         updated_at: new Date().toISOString()
-      });
+      };
+
+      if (height !== null) payload.height_cm = Math.round(height);
+
+      var result = await db.from('profiles').upsert(payload);
       button.disabled = false;
 
       if (result.error) {
-        toast('No se pudo guardar el perfil: ' + result.error.message, 'error');
+        toast('No se pudo guardar el perfil: ' + profileColumnMessage(result.error.message), 'error');
         return;
       }
 
@@ -279,6 +292,193 @@
     }
   }
 
+  function profileColumnMessage(message) {
+    var text = String(message || '');
+
+    if (/height_cm/i.test(text) && /column/i.test(text)) {
+      return 'Falta la columna height_cm. Ejecuta supabase/profile-height.sql en Supabase.';
+    }
+
+    return text;
+  }
+
+  function setOnboardingError(message) {
+    var box = $('onboardingError');
+    if (!box) return;
+
+    if (message) {
+      box.textContent = message;
+      box.hidden = false;
+    } else {
+      box.textContent = '';
+      box.hidden = true;
+    }
+  }
+
+  function openOnboarding(data) {
+    var modal = $('onboardingModal');
+    if (!modal) return;
+
+    setOnboardingError('');
+    if (data && data.weight != null) $('onboardingWeight').value = data.weight;
+    if (data && data.height != null) $('onboardingHeight').value = data.height;
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('onboarding-open');
+
+    window.setTimeout(function () {
+      var field = $('onboardingWeight');
+      if (field) field.focus();
+    }, 120);
+  }
+
+  function closeOnboarding() {
+    var modal = $('onboardingModal');
+    if (!modal) return;
+
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('onboarding-open');
+  }
+
+  function onboardingSkipKey() {
+    return 'novafit:onboarding-skip:' + (currentUser ? currentUser.id : 'anon');
+  }
+
+  function dismissOnboarding() {
+    try {
+      window.localStorage.setItem(onboardingSkipKey(), '1');
+    } catch (error) {
+      /* almacenamiento no disponible */
+    }
+
+    closeOnboarding();
+  }
+
+  function bindOnboarding() {
+    var form = $('onboardingForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      var weightField = $('onboardingWeight');
+      var heightField = $('onboardingHeight');
+      var button = $('onboardingSave');
+
+      var weight = Number.parseFloat(String(weightField.value).replace(',', '.'));
+      var height = Number.parseFloat(String(heightField.value).replace(',', '.'));
+
+      if (!Number.isFinite(weight) || weight < 20 || weight > 300) {
+        setOnboardingError('Escribe un peso válido entre 20 y 300 kg.');
+        weightField.focus();
+        return;
+      }
+
+      if (!Number.isFinite(height) || height < 100 || height > 250) {
+        setOnboardingError('Escribe una altura válida entre 100 y 250 cm.');
+        heightField.focus();
+        return;
+      }
+
+      setOnboardingError('');
+      button.disabled = true;
+
+      var update = await db.from('profiles').update({
+        height_cm: Math.round(height),
+        updated_at: new Date().toISOString()
+      }).eq('id', currentUser.id);
+
+      if (update.error) {
+        button.disabled = false;
+        setOnboardingError('No se pudo guardar la altura: ' +
+          profileColumnMessage(update.error.message));
+        return;
+      }
+
+      var countResult = await db.from('progress_entries')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', currentUser.id);
+
+      if (!countResult.error && (countResult.count || 0) === 0) {
+        var insert = await db.from('progress_entries').insert({
+          user_id: currentUser.id,
+          weight_kg: weight
+        });
+
+        if (insert.error) {
+          button.disabled = false;
+          setOnboardingError('No se pudo guardar el peso: ' + insert.error.message);
+          return;
+        }
+      }
+
+      var heightInput = $('profileHeightInput');
+      if (heightInput) heightInput.value = String(Math.round(height));
+
+      button.disabled = false;
+      closeOnboarding();
+      try {
+        window.localStorage.removeItem(onboardingSkipKey());
+      } catch (error) {
+        /* almacenamiento no disponible */
+      }
+      toast('Datos guardados. ¡Bienvenido a NovaFit!', 'success');
+
+      await Promise.all([loadProgress(), loadSummary()]);
+    });
+
+    var skip = $('onboardingSkip');
+    if (skip) skip.addEventListener('click', dismissOnboarding);
+
+    var close = $('onboardingClose');
+    if (close) close.addEventListener('click', dismissOnboarding);
+
+    var modal = $('onboardingModal');
+    if (modal) {
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) dismissOnboarding();
+      });
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+        dismissOnboarding();
+      }
+    });
+  }
+
+  async function maybeShowOnboarding() {
+    if (onboardingShown) return;
+    onboardingShown = true;
+
+    try {
+      if (window.localStorage.getItem(onboardingSkipKey())) return;
+    } catch (error) {
+      /* almacenamiento no disponible */
+    }
+
+    var results = await Promise.all([
+      db.from('profiles').select('height_cm').eq('id', currentUser.id).maybeSingle(),
+      db.from('progress_entries').select('id', { count: 'exact', head: true })
+        .eq('user_id', currentUser.id),
+      db.from('progress_entries').select('weight_kg').eq('user_id', currentUser.id)
+        .order('recorded_at', { ascending: false }).limit(1).maybeSingle()
+    ]);
+
+    var height = results[0].data ? results[0].data.height_cm : null;
+    var weightCount = results[1].count || 0;
+    var latest = results[2].data;
+
+    if (height && weightCount > 0) return;
+
+    openOnboarding({
+      weight: latest && latest.weight_kg != null ? latest.weight_kg : '',
+      height: height || ''
+    });
+  }
+
   async function loadProfile() {
     var result = await db.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
     var profile = result.data;
@@ -306,6 +506,9 @@
     $('avatarPreview').src = avatarUrl;
     $('profileGoal').value = GOALS.indexOf(profile.goal) !== -1 ? profile.goal : GOALS[0];
     $('profileLevel').value = LEVELS.indexOf(profile.level) !== -1 ? profile.level : LEVELS[0];
+
+    var heightInput = $('profileHeightInput');
+    if (heightInput) heightInput.value = profile.height_cm != null ? String(profile.height_cm) : '';
   }
 
   async function loadSummary() {
@@ -524,6 +727,7 @@
     bindLogout();
     bindProfileForm();
     bindAvatarControls();
+    bindOnboarding();
     bindMealButton();
     bindMeasurementButton();
 
@@ -540,6 +744,8 @@
       loadProgress(),
       loadSummary()
     ]);
+
+    await maybeShowOnboarding();
   }
 
   init();
