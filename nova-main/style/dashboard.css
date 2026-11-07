@@ -37,3 +37,8 @@ main{grid-column:2;padding:34px;max-width:1450px;width:100%;margin:auto}.app-sec
 body.onboarding-open{overflow:hidden}
 @keyframes onboardingIn{from{opacity:.4;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
 @media(max-width:520px){.onboarding-card{padding:24px}}
+
+/* Acciones de progreso */
+.progress-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.progress-actions .btn{margin-top:0}
+.progress-actions [hidden]{display:none}

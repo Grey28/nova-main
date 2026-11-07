@@ -140,8 +140,8 @@
     }
 
     return {
-      text: 'Tu último peso registrado es ' + ctx.weight + '.\n\nPésate una vez por semana, a la misma hora y en ayunas, para ver una tendencia real y no variaciones del día.',
-      actions: [{ label: 'Registrar medición', href: '#progreso' }]
+      text: 'Tu último peso registrado es ' + ctx.weight + '.\n\nSi quieres corregirlo, entra a Progreso y pulsa Editar peso. Para una nueva medición, usa Registrar medición.',
+      actions: [{ label: 'Ir a Progreso', href: '#progreso' }]
     };
   }
 

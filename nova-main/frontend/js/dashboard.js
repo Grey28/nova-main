@@ -10,6 +10,7 @@
 
   var currentUser = null;
   var routinesCache = [];
+  var latestWeightEntry = null;
   var onboardingShown = false;
   var AVATAR_PLACEHOLDER = './assets/avatar-placeholder.svg';
 
@@ -189,6 +190,47 @@
       }
 
       toast('Medición registrada.', 'success');
+      await Promise.all([loadProgress(), loadSummary()]);
+    });
+  }
+
+  function bindWeightEdit() {
+    var button = $('editWeightBtn');
+    if (!button) return;
+
+    button.addEventListener('click', async function () {
+      if (!latestWeightEntry) {
+        toast('Todavía no hay un peso registrado para editar.', 'error');
+        return;
+      }
+
+      var current = Number(latestWeightEntry.weight_kg);
+      var raw = window.prompt(
+        'Edita tu peso actual en kg:',
+        Number.isFinite(current) ? current.toFixed(1) : ''
+      );
+
+      if (raw === null) return;
+
+      var weight = Number.parseFloat(String(raw).replace(',', '.'));
+      if (!Number.isFinite(weight) || weight <= 0 || weight > 400) {
+        toast('Peso inválido.', 'error');
+        return;
+      }
+
+      button.disabled = true;
+      var result = await db.from('progress_entries')
+        .update({ weight_kg: weight })
+        .eq('id', latestWeightEntry.id)
+        .eq('user_id', currentUser.id);
+      button.disabled = false;
+
+      if (result.error) {
+        toast('No se pudo actualizar el peso: ' + result.error.message, 'error');
+        return;
+      }
+
+      toast('Peso actualizado.', 'success');
       await Promise.all([loadProgress(), loadSummary()]);
     });
   }
@@ -692,6 +734,11 @@
     var first = results[1].data;
     var totalWorkouts = results[2].count || 0;
 
+    latestWeightEntry = latest && latest.weight_kg != null ? latest : null;
+
+    var editButton = $('editWeightBtn');
+    if (editButton) editButton.hidden = !latestWeightEntry;
+
     $('totalWorkoutsMetric').textContent = String(totalWorkouts);
 
     if (latest && latest.weight_kg != null) {
@@ -730,6 +777,7 @@
     bindOnboarding();
     bindMealButton();
     bindMeasurementButton();
+    bindWeightEdit();
 
     db.auth.onAuthStateChange(function (event) {
       if (event === 'SIGNED_OUT') {
