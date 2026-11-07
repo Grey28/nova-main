@@ -1,0 +1,428 @@
+﻿/* Asistente virtual NovaFit: botÃ³n flotante y panel de chat. */
+
+.nova-assistant,
+.nova-assistant * {
+    box-sizing: border-box;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+.nova-assistant {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9998;
+    color: #e2e8f0;
+}
+
+/* ------------------------- BotÃ³n flotante ------------------------- */
+
+.nova-assistant button {
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nova-assistant input {
+    width: auto;
+    margin: 0;
+    border-radius: 12px;
+}
+
+.nova-assistant .nova-assistant-launcher {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .38), inset 0 0 0 1px rgba(255, 255, 255, .18);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.nova-assistant .nova-assistant-launcher:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(255, 255, 255, .25);
+}
+
+.nova-assistant .nova-assistant-launcher svg {
+    width: 28px;
+    height: 28px;
+}
+
+.nova-assistant .nova-assistant-launcher::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 2px solid rgba(34, 197, 94, .45);
+    opacity: 0;
+    animation: novaAssistantPulse 3s ease-out infinite;
+    pointer-events: none;
+}
+
+.nova-assistant .nova-assistant-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 10px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    border: 2px solid #081c15;
+}
+
+.nova-assistant.open .nova-assistant-badge {
+    display: none;
+}
+
+/* ------------------------- Panel ------------------------- */
+
+.nova-assistant-panel {
+    position: absolute;
+    right: 0;
+    bottom: 76px;
+    width: min(370px, calc(100vw - 32px));
+    height: min(560px, calc(100vh - 130px));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #081c15;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 20px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .55);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px) scale(.98);
+    transform-origin: bottom right;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s;
+    pointer-events: none;
+}
+
+.nova-assistant.open .nova-assistant-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+}
+
+.nova-assistant-header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #0b3d2e, #166534);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.nova-assistant-avatar {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    background: rgba(34, 197, 94, .18);
+    border: 1px solid rgba(34, 197, 94, .35);
+}
+
+.nova-assistant-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.nova-assistant-info strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+.nova-assistant-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    color: #86efac;
+}
+
+.nova-assistant-status i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, .18);
+}
+
+.nova-assistant .nova-assistant-close {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border-radius: 50%;
+    color: #cbd5e1;
+    font-size: 20px;
+}
+
+.nova-assistant .nova-assistant-close:hover {
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+}
+
+/* ------------------------- Mensajes ------------------------- */
+
+.nova-assistant-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    scrollbar-width: thin;
+    scrollbar-color: #166534 transparent;
+}
+
+.nova-assistant-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.nova-assistant-messages::-webkit-scrollbar-thumb {
+    background: #166534;
+    border-radius: 8px;
+}
+
+.nova-assistant-msg {
+    max-width: 88%;
+    padding: 10px 13px;
+    border-radius: 15px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.nova-assistant-msg.bot {
+    align-self: flex-start;
+    background: #0f2c21;
+    border: 1px solid rgba(34, 197, 94, .22);
+    border-bottom-left-radius: 5px;
+    color: #e2e8f0;
+}
+
+.nova-assistant-msg.user {
+    align-self: flex-end;
+    background: #166534;
+    border-bottom-right-radius: 5px;
+    color: #f0fdf4;
+}
+
+.nova-assistant-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.nova-assistant-action {
+    padding: 7px 11px;
+    border-radius: 9px;
+    background: rgba(34, 197, 94, .16);
+    border: 1px solid rgba(34, 197, 94, .4);
+    color: #bbf7d0;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nova-assistant-action:hover {
+    background: rgba(34, 197, 94, .3);
+    color: #fff;
+}
+
+/* Indicador de escritura */
+.nova-assistant-typing {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 16px;
+}
+
+.nova-assistant-typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: novaAssistantTyping 1.2s infinite ease-in-out;
+}
+
+.nova-assistant-typing span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.nova-assistant-typing span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+/* ------------------------- Sugerencias ------------------------- */
+
+.nova-assistant-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 7px;
+    padding: 0 14px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.nova-assistant-chips::-webkit-scrollbar {
+    display: none;
+}
+
+.nova-assistant .nova-assistant-chip {
+    flex: 0 0 auto;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, .1);
+    border: 1px solid rgba(34, 197, 94, .3);
+    color: #bbf7d0;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background .15s ease, color .15s ease;
+}
+
+.nova-assistant .nova-assistant-chip:hover {
+    background: rgba(34, 197, 94, .24);
+    color: #fff;
+}
+
+/* ------------------------- Formulario ------------------------- */
+
+.nova-assistant-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    background: #071a13;
+}
+
+.nova-assistant-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 13px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: #0d2419;
+    color: #f8fafc;
+    font-size: 13.5px;
+    outline: none;
+}
+
+.nova-assistant-form input::placeholder {
+    color: #64748b;
+}
+
+.nova-assistant-form input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, .15);
+}
+
+.nova-assistant .nova-assistant-send {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: 12px;
+    background: #22c55e;
+    color: #052e16;
+    transition: background .15s ease;
+}
+
+.nova-assistant .nova-assistant-send:hover {
+    background: #4ade80;
+}
+
+.nova-assistant .nova-assistant-send svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ------------------------- Ajustes ------------------------- */
+
+/* El aviso de la app (toast) comparte esquina con el asistente. */
+body.has-assistant .auth-toast {
+    bottom: 96px;
+}
+
+@media (max-width: 520px) {
+    .nova-assistant {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .nova-assistant .nova-assistant-launcher {
+        width: 56px;
+        height: 56px;
+    }
+
+    .nova-assistant-panel {
+        width: calc(100vw - 32px);
+        height: min(78vh, 560px);
+        bottom: 72px;
+    }
+}
+
+@keyframes novaAssistantPulse {
+    0% {
+        opacity: .7;
+        transform: scale(.9);
+    }
+    70% {
+        opacity: 0;
+        transform: scale(1.25);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.25);
+    }
+}
+
+@keyframes novaAssistantTyping {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: .5;
+    }
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nova-assistant *,
+    .nova-assistant *::before {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
