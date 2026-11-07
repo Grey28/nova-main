@@ -10,6 +10,7 @@
 
   var currentUser = null;
   var routinesCache = [];
+  var AVATAR_PLACEHOLDER = './assets/avatar-placeholder.svg';
 
   var GOALS = ['Mejorar condición física', 'Ganar masa muscular', 'Perder grasa'];
   var LEVELS = ['Principiante', 'Intermedio', 'Avanzado'];
@@ -179,6 +180,82 @@
     });
   }
 
+  function bindAvatarControls() {
+    var input = $('avatarInput');
+
+    if (input) {
+      input.addEventListener('change', async function () {
+        var file = input.files && input.files[0];
+        if (!file) return;
+
+        if (!/^image\/(png|jpe?g|webp)$/i.test(file.type)) {
+          toast('Formato no válido. Usa JPG, PNG o WebP.', 'error');
+          input.value = '';
+          return;
+        }
+
+        if (file.size > 2 * 1024 * 1024) {
+          toast('La imagen no puede superar 2 MB.', 'error');
+          input.value = '';
+          return;
+        }
+
+        var extension = (file.name.split('.').pop() || 'jpg').toLowerCase();
+        var path = currentUser.id + '/avatar.' + extension;
+
+        var upload = await db.storage.from('avatars').upload(path, file, {
+          upsert: true,
+          cacheControl: '3600',
+          contentType: file.type
+        });
+
+        if (upload.error) {
+          toast('No se pudo subir la foto: ' + upload.error.message, 'error');
+          input.value = '';
+          return;
+        }
+
+        var publicUrl = db.storage.from('avatars').getPublicUrl(path).data.publicUrl;
+        var displayUrl = publicUrl + '?v=' + Date.now();
+        var update = await db.from('profiles').update({
+          avatar_url: displayUrl,
+          updated_at: new Date().toISOString()
+        }).eq('id', currentUser.id);
+
+        if (update.error) {
+          toast('No se pudo guardar la foto en el perfil.', 'error');
+          input.value = '';
+          return;
+        }
+
+        $('avatarImg').src = displayUrl;
+        $('avatarPreview').src = displayUrl;
+        toast('Foto de perfil actualizada.', 'success');
+        input.value = '';
+      });
+    }
+
+    var remove = $('removeAvatarBtn');
+
+    if (remove) {
+      remove.addEventListener('click', async function () {
+        var update = await db.from('profiles').update({
+          avatar_url: null,
+          updated_at: new Date().toISOString()
+        }).eq('id', currentUser.id);
+
+        if (update.error) {
+          toast('No se pudo quitar la foto.', 'error');
+          return;
+        }
+
+        $('avatarImg').src = AVATAR_PLACEHOLDER;
+        $('avatarPreview').src = AVATAR_PLACEHOLDER;
+        toast('Foto de perfil eliminada.', 'success');
+      });
+    }
+  }
+
   async function loadProfile() {
     var result = await db.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
     var profile = result.data;
@@ -195,12 +272,15 @@
     }
 
     var name = profile.full_name || 'Usuario';
+    var avatarUrl = profile.avatar_url || AVATAR_PLACEHOLDER;
 
     $('profileName').textContent = name;
     $('heroName').textContent = name.split(' ')[0];
     $('profilePlan').textContent = profile.level || 'Miembro';
     $('profileNameInput').value = name;
     $('profileEmailInput').value = currentUser.email || '';
+    $('avatarImg').src = avatarUrl;
+    $('avatarPreview').src = avatarUrl;
     $('profileGoal').value = GOALS.indexOf(profile.goal) !== -1 ? profile.goal : GOALS[0];
     $('profileLevel').value = LEVELS.indexOf(profile.level) !== -1 ? profile.level : LEVELS[0];
   }
@@ -420,6 +500,7 @@
 
     bindLogout();
     bindProfileForm();
+    bindAvatarControls();
     bindMealButton();
     bindMeasurementButton();
 

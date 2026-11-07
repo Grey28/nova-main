@@ -13,3 +13,10 @@ main{grid-column:2;padding:34px;max-width:1450px;width:100%;margin:auto}.app-sec
 .mobile-menu{display:none;background:none;border:0;color:white;font-size:22px}
 @media(max-width:1000px){.grid{grid-template-columns:1fr 1fr}.wide{grid-column:span 2}}
 @media(max-width:760px){.navbar{padding:0 16px}.mobile-menu{display:block}.profile-info,.icon-box{display:none}.layout{display:block}.sidebar{transform:translateX(-100%);transition:.25s;z-index:60;box-shadow:12px 0 30px rgba(0,0,0,.35)}.sidebar.open{transform:translateX(0)}main{padding:24px 16px}.grid,.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.hero{padding:25px}.hero h1{font-size:29px}.page-title{font-size:29px}}
+.avatar-editor{display:flex;align-items:center;gap:22px;margin-bottom:26px;flex-wrap:wrap}
+.avatar-preview{width:96px;height:96px;border-radius:50%;object-fit:cover;background:#081c15;border:3px solid #22c55e;flex-shrink:0}
+.avatar-actions{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.avatar-actions .btn{margin-top:0}
+.avatar-actions .muted{margin:0;font-size:13px}
+.avatar-upload{cursor:pointer}
+.avatar-upload:hover,.avatar-actions button.btn:hover{background:#1c4f3b}

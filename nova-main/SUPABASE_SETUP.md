@@ -24,6 +24,8 @@ Esto crea:
 
 También activa **RLS** (Row Level Security) para que cada usuario solo pueda ver y modificar sus propios datos, y crea un perfil con tres rutinas iniciales cada vez que alguien se registra.
 
+Para las fotos de perfil, ejecuta también `supabase/storage-avatars.sql`. Ese script crea el bucket público `avatars` y las políticas para que cada usuario solo pueda subir, actualizar o borrar su propia foto.
+
 ## 3. Configurar las credenciales del frontend
 
 1. En Supabase ve a **Project Settings > API**.
