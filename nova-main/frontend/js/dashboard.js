@@ -180,6 +180,29 @@
     });
   }
 
+  function storageErrorMessage(message) {
+    var text = String(message || '');
+    var lower = text.toLowerCase();
+
+    if (lower.indexOf('bucket not found') !== -1) {
+      return 'No existe el bucket "avatars". Ejecuta supabase/storage-avatars.sql en el SQL Editor de Supabase.';
+    }
+
+    if (lower.indexOf('row-level security') !== -1 || lower.indexOf('permission') !== -1) {
+      return 'El bucket existe pero faltan permisos. Ejecuta supabase/storage-avatars.sql en Supabase.';
+    }
+
+    if (lower.indexOf('payload too large') !== -1 || lower.indexOf('maximum') !== -1) {
+      return 'La imagen es demasiado grande. El máximo es 2 MB.';
+    }
+
+    if (lower.indexOf('mime') !== -1) {
+      return 'Formato no permitido. Usa JPG, PNG o WebP.';
+    }
+
+    return text;
+  }
+
   function bindAvatarControls() {
     var input = $('avatarInput');
 
@@ -210,7 +233,7 @@
         });
 
         if (upload.error) {
-          toast('No se pudo subir la foto: ' + upload.error.message, 'error');
+          toast('No se pudo subir la foto: ' + storageErrorMessage(upload.error.message), 'error');
           input.value = '';
           return;
         }
