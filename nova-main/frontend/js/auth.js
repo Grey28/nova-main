@@ -14,17 +14,33 @@
     'User already registered': 'Ya existe una cuenta con este correo.',
     'Password should be at least 6 characters': 'La contraseña debe tener al menos 6 caracteres.',
     'New password should be different from the old password': 'La nueva contraseña debe ser diferente a la anterior.',
-    'Email rate limit exceeded': 'Demasiados intentos. Espera unos minutos e inténtalo de nuevo.',
+    'Email rate limit exceeded': 'Supabase alcanzó el límite de correos. Espera aproximadamente una hora o configura un servidor SMTP propio.',
     'For security purposes, you can only request this once every 60 seconds': 'Por seguridad, espera 60 segundos antes de volver a intentarlo.',
     'Token has expired or is invalid': 'El código expiró o no es válido. Solicita uno nuevo.',
     'Auth session missing!': 'La sesión de recuperación expiró. Solicita un nuevo código.',
     'User not found': 'No encontramos una cuenta con ese correo.'
   };
 
+  var ERROR_CODES = {
+    over_email_send_rate_limit: 'Supabase alcanzó el límite de correos. Espera aproximadamente una hora o configura un servidor SMTP propio.',
+    over_request_rate_limit: 'Demasiadas solicitudes. Espera un momento e inténtalo de nuevo.',
+    email_not_confirmed: 'Debes confirmar tu correo antes de iniciar sesión.',
+    user_already_exists: 'Ya existe una cuenta con este correo.',
+    weak_password: 'La contraseña es demasiado débil. Usa al menos 6 caracteres.'
+  };
+
   function translateError(error) {
     if (!error) return 'Ocurrió un error inesperado.';
+    if (error.code && ERROR_CODES[error.code]) return ERROR_CODES[error.code];
+
     var message = error.message || String(error);
-    return ERROR_MESSAGES[message] || message;
+    var lower = message.toLowerCase();
+
+    for (var key in ERROR_MESSAGES) {
+      if (key.toLowerCase() === lower) return ERROR_MESSAGES[key];
+    }
+
+    return message;
   }
 
   function getMessageBox() {
