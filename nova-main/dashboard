@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>NovaFit Dashboard</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            min-height:200vh;
+            background:
+            radial-gradient(circle at top left,#2ECC71 0%,transparent 30%),
+            radial-gradient(circle at bottom right,#00C853 0%,transparent 25%),
+            linear-gradient(135deg,#02150D,#06351F,#02150D);
+        }
+
+        /*==========================
+            NAVBAR
+        ==========================*/
+
+        .navbar{
+
+            position:fixed;
+            top:0;
+            left:0;
+
+            width:100%;
+            height:85px;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:0 60px;
+
+            background:rgba(7,33,18,.55);
+
+            backdrop-filter:blur(18px);
+
+            border-bottom:1px solid rgba(255,255,255,.08);
+
+            box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+            z-index:999;
+        }
+
+        /*==========================
+            LOGO
+        ==========================*/
+
+        .logo{
+
+            display:flex;
+            align-items:center;
+            gap:15px;
+        }
+
+        .logo-circle{
+
+            width:55px;
+            height:55px;
+
+            border-radius:50%;
+
+            background:linear-gradient(145deg,#00E676,#00C853);
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            color:white;
+
+            font-size:26px;
+
+            box-shadow:0 0 25px rgba(0,200,83,.55);
+
+        }
+
+        .logo h2{
+
+            color:white;
+
+            font-size:28px;
+
+            font-weight:700;
+
+            letter-spacing:1px;
+        }
+
+        .logo span{
+
+            color:#00E676;
+        }
+
+        /*==========================
+            MENU
+        ==========================*/
+
+        .menu{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:20px;
+        }
+
+        .icon-box{
+
+            width:48px;
+
+            height:48px;
+
+            border-radius:15px;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            color:white;
+
+            background:rgba(255,255,255,.05);
+
+            transition:.35s;
+
+            cursor:pointer;
+
+            font-size:18px;
+        }
+
+        .icon-box:hover{
+
+            background:#00C853;
+
+            transform:translateY(-4px);
+
+            box-shadow:0 10px 25px rgba(0,200,83,.4);
+        }
+
+        /*==========================
+            PERFIL
+        ==========================*/
+
+        .profile{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:15px;
+
+            background:rgba(255,255,255,.05);
+
+            padding:8px 18px;
+
+            border-radius:50px;
+
+            cursor:pointer;
+
+            transition:.35s;
+        }
+
+        .profile:hover{
+
+            background:rgba(0,200,83,.15);
+        }
+
+        .profile img{
+
+            width:48px;
+
+            height:48px;
+
+            border-radius:50%;
+
+            object-fit:cover;
+
+            border:3px solid #00E676;
+        }
+
+        .profile-info{
+
+            display:flex;
+
+            flex-direction:column;
+        }
+
+        .profile-info h4{
+
+            color:white;
+
+            font-size:15px;
+        }
+
+        .profile-info p{
+
+            color:#B9C4BF;
+
+            font-size:12px;
+        }
+
+        .arrow{
+
+            color:white;
+
+            transition:.3s;
+        }
+
+        .profile:hover .arrow{
+
+            transform:rotate(180deg);
+        }
+
+        /*==========================
+            RESPONSIVE
+        ==========================*/
+
+        @media(max-width:1000px){
+
+            .navbar{
+
+                padding:0 20px;
+            }
+
+            .profile-info{
+
+                display:none;
+            }
+
+        }
+
+        @media(max-width:760px){
+
+            .logo h2{
+
+                display:none;
+            }
+
+            .navbar{
+
+                height:75px;
+            }
+
+            .icon-box{
+
+                width:42px;
+
+                height:42px;
+            }
+
+            .profile{
+
+                padding:6px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-circle">
+                🌿
+            </div>
+
+            <h2>Nova<span>Fit</span></h2>
+
+        </div>
+
+        <div class="menu">
+
+            <div class="icon-box">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <div class="icon-box">
+                <i class="fa-solid fa-comments"></i>
+            </div>
+
+            <div class="icon-box">
+                <i class="fa-solid fa-gear"></i>
+            </div>
+
+            <div class="profile">
+
+                <img src="https://i.pravatar.cc/150?img=32" alt="Usuario">
+
+                <div class="profile-info">
+
+                    <h4>María José</h4>
+
+                    <p>Miembro Premium</p>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-down arrow"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+</body>
+
+</html>

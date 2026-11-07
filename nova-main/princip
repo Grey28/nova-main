@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaFit</title>
+
+    <style>
+        /* Reinicio */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            background:#111;
+        }
+
+        /* HERO */
+        .hero{
+            min-height:100vh;
+            background:linear-gradient(135deg,#021b12,#0b3d2e,#166534,#22c55e);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            color:white;
+            position:relative;
+            overflow:hidden;
+        }
+
+        /* Brillo */
+        .hero::before{
+            content:"";
+            position:absolute;
+            width:700px;
+            height:700px;
+            border-radius:50%;
+            background:rgba(34,197,94,.25);
+            filter:blur(120px);
+            top:-200px;
+            right:-200px;
+        }
+
+        .contenido{
+            position:relative;
+            z-index:2;
+            max-width:800px;
+            padding:20px;
+        }
+
+        h1{
+            font-size:60px;
+            margin-bottom:20px;
+        }
+
+        p{
+            font-size:20px;
+            line-height:1.6;
+            margin-bottom:35px;
+        }
+
+        .boton{
+            display:inline-block;
+            padding:16px 38px;
+            background:#22c55e;
+            color:white;
+            text-decoration:none;
+            border-radius:50px;
+            font-weight:bold;
+            transition:.3s;
+        }
+
+        .boton:hover{
+            background:#16a34a;
+            transform:translateY(-4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <div class="contenido">
+
+            <h1>NovaFit</h1>
+
+            <p>
+                Tu plataforma para transformar tu cuerpo y tu mente.
+                Entrena, mejora tus hábitos y alcanza tus objetivos
+                con planes personalizados.
+            </p>
+
+            <a href="#" class="boton">Comenzar</a>
+
+        </div>
+
+    </section>
+<!-- =========================
+     ¿QUÉ ES NOVAFIT?
+========================== -->
+
+<section style="background:#081c15; color:white; padding:100px 8%;">
+
+    <div style="max-width:1300px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:80px; flex-wrap:wrap;">
+
+        <!-- Texto -->
+        <div style="flex:1; min-width:350px;">
+
+            <span style="color:#22c55e; font-size:15px; text-transform:uppercase; letter-spacing:2px; font-weight:bold;">
+                Bienvenido a NovaFit
+            </span>
+
+            <h2 style="font-size:48px; margin:20px 0;">
+                ¿Qué es NovaFit?
+            </h2>
+
+            <p style="font-size:18px; line-height:1.8; color:#d8d8d8;">
+                NovaFit es una plataforma inteligente enfocada en el bienestar
+                físico y mental. Diseñada para ayudarte a crear hábitos
+                saludables mediante entrenamiento personalizado, seguimiento
+                del progreso y recomendaciones adaptadas a tus objetivos.
+            </p>
+
+            <p style="font-size:18px; line-height:1.8; color:#d8d8d8;">
+                Todo lo que necesitas para mejorar tu calidad de vida se
+                encuentra en un solo lugar, con una experiencia moderna,
+                intuitiva y motivadora.
+            </p>
+
+            <!-- Tarjetas -->
+            <div style="display:flex; gap:20px; margin-top:40px; flex-wrap:wrap;">
+
+                <div style="background:#14532d; border-radius:20px; padding:25px; width:180px; text-align:center;">
+                    <div style="font-size:40px;">🏋️</div>
+                    <h3>Entrenamiento</h3>
+                    <p style="color:#d8d8d8; font-size:15px;">
+                        Rutinas personalizadas para cada usuario.
+                    </p>
+                </div>
+
+                <div style="background:#14532d; border-radius:20px; padding:25px; width:180px; text-align:center;">
+                    <div style="font-size:40px;">❤️</div>
+                    <h3>Bienestar</h3>
+                    <p style="color:#d8d8d8; font-size:15px;">
+                        Mejora tu salud física y mental diariamente.
+                    </p>
+                </div>
+
+                <div style="background:#14532d; border-radius:20px; padding:25px; width:180px; text-align:center;">
+                    <div style="font-size:40px;">📈</div>
+                    <h3>Progreso</h3>
+                    <p style="color:#d8d8d8; font-size:15px;">
+                        Visualiza tus avances con estadísticas.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Imagen -->
+        <div style="flex:1; min-width:320px; text-align:center;">
+
+            
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     CARACTERÍSTICAS PRINCIPALES
+========================================= -->
+
+<section style="background:#0f172a; padding:100px 8%; color:white;">
+}
+    <div style="max-width:1300px; margin:auto; text-align:center;">
+
+        <span style="color:#22c55e; font-size:15px; letter-spacing:2px; text-transform:uppercase; font-weight:bold;">
+            Todo lo que necesitas
+        </span>
+
+        <h2 style="font-size:48px; margin:20px 0;">
+            Características principales
+        </h2>
+
+        <p style="font-size:18px; color:#cbd5e1; max-width:700px; margin:0 auto 60px;">
+            NovaFit reúne entrenamiento, nutrición, inteligencia artificial y una comunidad activa
+            para ayudarte a alcanzar tus objetivos de forma inteligente.
+        </p>
+
+        <!-- TARJETAS -->
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;">
+
+            <!-- Tarjeta 1 -->
+            <div style="background:#1e293b; border-radius:25px; padding:35px; transition:0.4s; cursor:pointer; border:1px solid rgba(255,255,255,.08);">
+                <div style="font-size:50px;">🏋️</div>
+                <h3 style="margin:20px 0;">Rutinas personalizadas</h3>
+                <p style="color:#cbd5e1;">
+                    Planes de entrenamiento adaptados a tus objetivos y nivel físico.
+                </p>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div style="background:#1e293b; border-radius:25px; padding:35px; transition:0.4s; cursor:pointer; border:1px solid rgba(255,255,255,.08);">
+                <div style="font-size:50px;">🥗</div>
+                <h3 style="margin:20px 0;">Nutrición</h3>
+                <p style="color:#cbd5e1;">
+                    Recomendaciones alimenticias para complementar tu entrenamiento.
+                </p>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div style="background:#1e293b; border-radius:25px; padding:35px; transition:0.4s; cursor:pointer; border:1px solid rgba(255,255,255,.08);">
+                <div style="font-size:50px;">📊</div>
+                <h3 style="margin:20px 0;">Seguimiento</h3>
+                <p style="color:#cbd5e1;">
+                    Visualiza tu progreso con estadísticas, gráficos y metas cumplidas.
+                </p>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div style="background:#1e293b; border-radius:25px; padding:35px; transition:0.4s; cursor:pointer; border:1px solid rgba(255,255,255,.08);">
+                <div style="font-size:50px;">👥</div>
+                <h3 style="margin:20px 0;">Comunidad</h3>
+                <p style="color:#cbd5e1;">
+                    Comparte experiencias, encuentra motivación y conecta con otros usuarios.
+                </p>
+            </div>
+
+            <!-- Tarjeta 5 -->
+            <div style="background:#1e293b; border-radius:25px; padding:35px; transition:0.4s; cursor:pointer; border:1px solid rgba(255,255,255,.08);">
+                <div style="font-size:50px;">🏆</div>
+                <h3 style="margin:20px 0;">Retos</h3>
+                <p style="color:#cbd5e1;">
+                    Participa en desafíos semanales y desbloquea logros exclusivos.
+                </p>
+            </div>
+
+            <!-- Tarjeta 6 -->
+            <div style="background:#1e293b; border-radius:25px; padding:35px; transition:0.4s; cursor:pointer; border:1px solid rgba(255,255,255,.08);">
+                <div style="font-size:50px;">🤖</div>
+                <h3 style="margin:20px 0;">Nova IA</h3>
+                <p style="color:#cbd5e1;">
+                    Tu asistente inteligente que responde preguntas y personaliza tu experiencia.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     DASHBOARD NOVAFIT
+===================================================== -->
+
+<section style="background:#06130f; padding:100px 8%;">
+
+    <div style="max-width:1300px; margin:auto;">
+
+        <div style="text-align:center; margin-bottom:60px;">
+
+            <span style="color:#22c55e; font-size:15px; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
+                Dashboard Inteligente
+            </span>
+
+            <h2 style="font-size:48px; color:white; margin:20px 0;">
+                Controla tu progreso
+            </h2>
+
+            <p style="color:#b7c7bf; font-size:18px; max-width:700px; margin:auto;">
+                Visualiza toda tu información en un solo lugar y conoce tu evolución en tiempo real.
+            </p>
+
+        </div>
+
+        <!-- Panel -->
+
+        <div style="background:#10251d; border-radius:30px; padding:40px; box-shadow:0 20px 40px rgba(0,0,0,.35);">
+
+            <!-- Tarjetas superiores -->
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-bottom:35px;">
+
+                <div style="background:#16372b; padding:25px; border-radius:20px; text-align:center;">
+                    <h4 style="color:#8affc5;">⚖️ Peso</h4>
+                    <h2 style="color:white; font-size:38px;">72 kg</h2>
+                </div>
+
+                <div style="background:#16372b; padding:25px; border-radius:20px; text-align:center;">
+                    <h4 style="color:#8affc5;">📏 IMC</h4>
+                    <h2 style="color:white; font-size:38px;">23.4</h2>
+                </div>
+
+                <div style="background:#16372b; padding:25px; border-radius:20px; text-align:center;">
+                    <h4 style="color:#8affc5;">🔥 Calorías</h4>
+                    <h2 style="color:white; font-size:38px;">2.150</h2>
+                </div>
+
+            </div>
+
+            <!-- Gráficas -->
+
+            <div style="display:grid; grid-template-columns:2fr 1fr; gap:30px; flex-wrap:wrap;">
+
+                <!-- Gráfico -->
+
+                <div style="background:#16372b; border-radius:20px; padding:30px;">
+
+                    <h3 style="color:white; margin-bottom:25px;">
+                        Progreso semanal
+                    </h3>
+
+                    <div style="display:flex; align-items:flex-end; justify-content:space-around; height:220px;">
+
+                        <div style="width:35px; height:90px; background:#22c55e; border-radius:8px;"></div>
+
+                        <div style="width:35px; height:130px; background:#22c55e; border-radius:8px;"></div>
+
+                        <div style="width:35px; height:160px; background:#22c55e; border-radius:8px;"></div>
+
+                        <div style="width:35px; height:120px; background:#22c55e; border-radius:8px;"></div>
+
+                        <div style="width:35px; height:190px; background:#22c55e; border-radius:8px;"></div>
+
+                        <div style="width:35px; height:170px; background:#22c55e; border-radius:8px;"></div>
+
+                        <div style="width:35px; height:210px; background:#22c55e; border-radius:8px;"></div>
+
+                    </div>
+
+                </div>
+
+                <!-- Progreso -->
+
+                <div style="background:#16372b; border-radius:20px; padding:30px;">
+
+                    <h3 style="color:white; margin-bottom:30px;">
+                        Objetivo semanal
+                    </h3>
+
+                    <div style="background:#0d211a; border-radius:20px; height:22px; overflow:hidden;">
+
+                        <div style="width:78%; height:100%; background:#22c55e;"></div>
+
+                    </div>
+
+                    <h2 style="color:#22c55e; margin-top:20px;">
+                        78%
+                    </h2>
+
+                    <p style="color:#cbd5e1;">
+                        Has completado 5 de 7 entrenamientos esta semana.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     ¿CÓMO FUNCIONA?
+===================================================== -->
+
+<section style="background:linear-gradient(180deg,#081c15,#0d241c); padding:100px 8%;">
+
+    <div style="max-width:1200px; margin:auto; text-align:center;">
+
+        <span style="color:#22c55e; font-size:15px; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
+            Comienza en minutos
+        </span>
+
+        <h2 style="font-size:48px; color:white; margin:20px 0;">
+            ¿Cómo funciona?
+        </h2>
+
+        <p style="color:#cbd5e1; font-size:18px; max-width:700px; margin:0 auto 80px;">
+            Empieza tu transformación en solo tres pasos sencillos.
+        </p>
+
+        <!-- Línea -->
+        <div style="position:relative; display:flex; justify-content:space-between; align-items:flex-start; gap:30px; flex-wrap:wrap;">
+
+            <div style="position:absolute; top:45px; left:12%; width:76%; height:6px; background:#22c55e; border-radius:20px; z-index:0;"></div>
+
+            <!-- Paso 1 -->
+            <div style="position:relative; z-index:1; flex:1; min-width:250px;">
+
+                <div style="width:90px; height:90px; margin:auto; border-radius:50%; background:#22c55e; display:flex; justify-content:center; align-items:center; font-size:40px;">
+                    👤
+                </div>
+
+                <h3 style="color:white; margin-top:25px;">
+                    Crear cuenta
+                </h3>
+
+                <p style="color:#cbd5e1;">
+                    Regístrate en pocos segundos y crea tu perfil personal.
+                </p>
+
+            </div>
+
+            <!-- Paso 2 -->
+            <div style="position:relative; z-index:1; flex:1; min-width:250px;">
+
+                <div style="width:90px; height:90px; margin:auto; border-radius:50%; background:#22c55e; display:flex; justify-content:center; align-items:center; font-size:40px;">
+                    🎯
+                </div>
+
+                <h3 style="color:white; margin-top:25px;">
+                    Personalizar objetivos
+                </h3>
+
+                <p style="color:#cbd5e1;">
+                    Define tus metas, nivel físico y preferencias de entrenamiento.
+                </p>
+
+            </div>
+
+            <!-- Paso 3 -->
+            <div style="position:relative; z-index:1; flex:1; min-width:250px;">
+
+                <div style="width:90px; height:90px; margin:auto; border-radius:50%; background:#22c55e; display:flex; justify-content:center; align-items:center; font-size:40px;">
+                    💪
+                </div>
+
+                <h3 style="color:white; margin-top:25px;">
+                    Comenzar a entrenar
+                </h3>
+
+                <p style="color:#cbd5e1;">
+                    Sigue tu plan personalizado y visualiza tu progreso cada día.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     PLANES NOVAFIT
+===================================================== -->
+
+<section style="background:#06130f; padding:100px 8%;">
+
+    <div style="max-width:1300px; margin:auto; text-align:center;">
+
+        <span style="color:#22c55e; font-size:15px; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
+            Elige tu experiencia
+        </span>
+
+        <h2 style="font-size:48px; color:white; margin:20px 0;">
+            Nuestros Planes
+        </h2>
+
+        <p style="color:#cbd5e1; font-size:18px; max-width:700px; margin:0 auto 60px;">
+            Escoge el plan que mejor se adapte a tus objetivos y comienza tu transformación.
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:35px;">
+
+            <!-- Gratuito -->
+            <div style="background:#123528; border-radius:25px; padding:40px; box-shadow:0 10px 30px rgba(0,0,0,.3);">
+
+                <h3 style="color:white; font-size:30px;">Gratuito</h3>
+
+                <h1 style="color:#22c55e; margin:25px 0;">$0</h1>
+
+                <p style="color:#cbd5e1;">Ideal para comenzar.</p>
+
+                <hr style="margin:30px 0; border:1px solid rgba(255,255,255,.1);">
+
+                <p style="color:white;">✅ Rutinas básicas</p>
+                <p style="color:white;">✅ Seguimiento básico</p>
+                <p style="color:white;">✅ Comunidad</p>
+                <p style="color:#777;">❌ IA Nova</p>
+                <p style="color:#777;">❌ Nutrición personalizada</p>
+
+                <button style="margin-top:30px; background:#22c55e; border:none; padding:15px 35px; color:white; border-radius:50px; cursor:pointer;">
+                    Comenzar
+                </button>
+
+            </div>
+
+            <!-- Premium -->
+            <div style="background:#22c55e; border-radius:25px; padding:40px; transform:scale(1.05); box-shadow:0 20px 50px rgba(34,197,94,.4);">
+
+                <span style="background:white; color:#22c55e; padding:8px 20px; border-radius:50px; font-weight:bold;">
+                    MÁS POPULAR
+                </span>
+
+                <h3 style="color:white; font-size:30px; margin-top:20px;">Premium</h3>
+
+                <h1 style="color:white; margin:25px 0;">$29.900</h1>
+
+                <p style="color:white;">/ mes</p>
+
+                <hr style="margin:30px 0; border:1px solid rgba(255,255,255,.3);">
+
+                <p style="color:white;">✅ Todo el plan gratuito</p>
+                <p style="color:white;">✅ IA Nova</p>
+                <p style="color:white;">✅ Nutrición personalizada</p>
+                <p style="color:white;">✅ Estadísticas avanzadas</p>
+                <p style="color:white;">✅ Retos exclusivos</p>
+
+                <button style="margin-top:30px; background:white; border:none; padding:15px 35px; color:#22c55e; font-weight:bold; border-radius:50px; cursor:pointer;">
+                    Elegir plan
+                </button>
+
+            </div>
+
+            <!-- Entrenadores -->
+            <div style="background:#123528; border-radius:25px; padding:40px; box-shadow:0 10px 30px rgba(0,0,0,.3);">
+
+                <h3 style="color:white; font-size:30px;">Entrenadores</h3>
+
+                <h1 style="color:#22c55e; margin:25px 0;">Pro</h1>
+
+                <p style="color:#cbd5e1;">Para profesionales del fitness.</p>
+
+                <hr style="margin:30px 0; border:1px solid rgba(255,255,255,.1);">
+
+                <p style="color:white;">✅ Gestión de clientes</p>
+                <p style="color:white;">✅ Creación de rutinas</p>
+                <p style="color:white;">✅ Seguimiento avanzado</p>
+                <p style="color:white;">✅ Estadísticas</p>
+                <p style="color:white;">✅ Panel profesional</p>
+
+                <button style="margin-top:30px; background:#22c55e; border:none; padding:15px 35px; color:white; border-radius:50px; cursor:pointer;">
+                    Contactar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     PREGUNTAS FRECUENTES
+===================================================== -->
+
+<section style="background:#081c15; padding:100px 8%; font-family:Arial, Helvetica, sans-serif;">
+
+    <div style="max-width:900px; margin:auto;">
+
+        <div style="text-align:center; margin-bottom:50px;">
+
+            <span style="color:#22c55e; font-size:15px; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
+                Centro de ayuda
+            </span>
+
+            <h2 style="font-size:48px; color:white; margin:20px 0;">
+                Preguntas frecuentes
+            </h2>
+
+            <p style="color:#cbd5e1; font-size:18px;">
+                Resolvemos las dudas más comunes sobre NovaFit.
+            </p>
+
+        </div>
+
+        <!-- Pregunta 1 -->
+        <button class="accordion">¿NovaFit es gratuito?</button>
+        <div class="panel">
+            <p>Sí. Puedes utilizar el plan gratuito con funciones esenciales o acceder al plan Premium para desbloquear todas las herramientas.</p>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <button class="accordion">¿Puedo personalizar mis rutinas?</button>
+        <div class="panel">
+            <p>Sí. NovaFit adapta los entrenamientos según tus objetivos, nivel físico y progreso.</p>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <button class="accordion">¿Qué es Nova IA?</button>
+        <div class="panel">
+            <p>Nova IA es el asistente inteligente que responde preguntas, genera recomendaciones y te ayuda a mantener la motivación.</p>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <button class="accordion">¿Necesito conexión a Internet?</button>
+        <div class="panel">
+            <p>Para sincronizar tu progreso sí, aunque algunas funciones podrán utilizarse sin conexión.</p>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <button class="accordion">¿Puedo cancelar mi suscripción?</button>
+        <div class="panel">
+            <p>Sí. Puedes cancelar tu plan Premium en cualquier momento desde tu perfil.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+.accordion{
+    background:#123528;
+    color:white;
+    cursor:pointer;
+    padding:22px;
+    width:100%;
+    border:none;
+    outline:none;
+    text-align:left;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:15px;
+    margin-top:15px;
+    transition:.3s;
+}
+
+.accordion:hover{
+    background:#1c4f3b;
+}
+
+.accordion.active{
+    background:#22c55e;
+}
+
+.panel{
+    background:#16372b;
+    color:#dbe7df;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .4s ease;
+    border-radius:0 0 15px 15px;
+    margin-bottom:10px;
+}
+
+.panel p{
+    padding:20px;
+    line-height:1.7;
+}
+</style>
+
+<script>
+const accordion = document.querySelectorAll(".accordion");
+
+accordion.forEach(item => {
+    item.addEventListener("click", function(){
+
+        this.classList.toggle("active");
+
+        const panel = this.nextElementSibling;
+
+        if(panel.style.maxHeight){
+            panel.style.maxHeight = null;
+        }else{
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+
+    });
+});
+</script>
+<!-- =====================================================
+     LLAMADO A LA ACCIÓN (CTA)
+===================================================== -->
+
+<section style="background:linear-gradient(135deg,#0b3d2e,#166534,#22c55e); padding:120px 8%; text-align:center; font-family:Arial, Helvetica, sans-serif; position:relative; overflow:hidden;">
+
+    <!-- Círculos decorativos -->
+    <div style="position:absolute; width:350px; height:350px; background:rgba(255,255,255,.08); border-radius:50%; top:-120px; left:-120px;"></div>
+
+    <div style="position:absolute; width:250px; height:250px; background:rgba(255,255,255,.08); border-radius:50%; bottom:-100px; right:-80px;"></div>
+
+    <div style="max-width:900px; margin:auto; position:relative; z-index:2;">
+
+        <span style="color:#d1fae5; font-size:15px; letter-spacing:2px; text-transform:uppercase; font-weight:bold;">
+            Empieza hoy
+        </span>
+
+        <h2 style="font-size:56px; color:white; margin:20px 0;">
+            Tu mejor versión comienza con NovaFit
+        </h2>
+
+        <p style="font-size:20px; color:#e8fff4; max-width:700px; margin:0 auto 45px; line-height:1.8;">
+            Únete a miles de personas que ya están mejorando su salud, creando hábitos
+            sostenibles y alcanzando sus objetivos con el apoyo de NovaFit.
+        </p>
+
+        <a href="#registro"
+           style="display:inline-block;
+                  background:white;
+                  color:#166534;
+                  text-decoration:none;
+                  font-size:22px;
+                  font-weight:bold;
+                  padding:20px 55px;
+                  border-radius:60px;
+                  box-shadow:0 15px 35px rgba(0,0,0,.25);
+                  transition:.3s;">
+
+            🚀 Registrarme Gratis
+
+        </a>
+
+        <p style="margin-top:25px; color:#d1fae5; font-size:15px;">
+            Sin tarjeta de crédito • Registro en menos de 1 minuto
+        </p>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     FOOTER NOVAFIT
+===================================================== -->
+
+<footer style="background:#04110d; color:white; padding:80px 8% 30px; font-family:Arial, Helvetica, sans-serif;">
+
+    <div style="max-width:1300px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:50px;">
+
+        <!-- Logo y descripción -->
+        <div>
+
+            <h2 style="color:#22c55e; margin-bottom:20px;">
+                NovaFit
+            </h2>
+
+            <p style="color:#cbd5e1; line-height:1.8;">
+                Tu plataforma integral para transformar tu bienestar físico y mental mediante entrenamiento, nutrición, tecnología e inteligencia artificial.
+            </p>
+
+        </div>
+
+        <!-- Enlaces -->
+        <div>
+
+            <h3 style="margin-bottom:20px;">
+                Navegación
+            </h3>
+
+            <p><a href="#" style="color:#cbd5e1; text-decoration:none;">Inicio</a></p>
+
+            <p><a href="#" style="color:#cbd5e1; text-decoration:none;">¿Qué es NovaFit?</a></p>
+
+            <p><a href="#" style="color:#cbd5e1; text-decoration:none;">Características</a></p>
+
+            <p><a href="#" style="color:#cbd5e1; text-decoration:none;">Planes</a></p>
+
+            <p><a href="#" style="color:#cbd5e1; text-decoration:none;">Contacto</a></p>
+
+        </div>
+
+        <!-- Contacto -->
+        <div>
+
+            <h3 style="margin-bottom:20px;">
+                Contáctanos
+            </h3>
+
+            <p style="color:#cbd5e1;">📧 contacto@novafit.com</p>
+
+            <p style="color:#cbd5e1;">📞 +57 323 3725 312</p>
+
+            <p style="color:#cbd5e1;">📍 Medellín, Colombia</p>
+
+        </div>
+
+        <!-- Redes Sociales -->
+        <div>
+
+            <h3 style="margin-bottom:20px;">
+                Síguenos
+            </h3>
+
+            <div style="display:flex; gap:15px; font-size:30px;">
+
+                <a href="#" style="text-decoration:none;">📘</a>
+
+                <a href="#" style="text-decoration:none;">📷</a>
+
+                <a href="#" style="text-decoration:none;">🐦</a>
+
+                <a href="#" style="text-decoration:none;">▶️</a>
+
+                <a href="#" style="text-decoration:none;">💼</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr style="margin:50px 0 25px; border:1px solid rgba(255,255,255,.1);">
+
+    <div style="text-align:center; color:#9ca3af; font-size:15px;">
+
+        © 2026 <strong>NovaFit</strong>. Todos los derechos reservados.
+
+    </div>
+
+</footer>
+</body>
+</html>
