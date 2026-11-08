@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaFit | Recuperar contraseña</title>
 
-    <link rel="stylesheet" href="../style/recuperar.css">
+    <link rel="stylesheet" href="../style/theme.css">
+    <link rel="stylesheet" href="../style/auth-pages.css">
     <link rel="stylesheet" href="../style/auth.css">
 </head>
 
 <body data-page="recover">
 
-    <div class="contenedor">
+    <main class="auth-card">
+        <a class="auth-brand" href="index.html" aria-label="Volver a NovaFit">
+            <span class="auth-mark">N</span>
+            <span class="auth-name">Nova<em>Fit</em></span>
+        </a>
 
-        <h1>¿Olvidaste tu contraseña?</h1>
-
+        <h1>Recupera tu acceso</h1>
         <p>
-            Escribe el correo electrónico asociado a tu cuenta.
+            Escribe el correo asociado a tu cuenta.
             Te enviaremos un código para restablecer tu contraseña.
         </p>
 
@@ -34,21 +38,14 @@
                 required
             >
 
-            <button type="submit">
-                Enviar código
-            </button>
+            <button type="submit">Enviar código</button>
 
         </form>
 
-        <div class="volver">
-
-            <a href="inicio.html">
-                ← Volver al inicio de sesión
-            </a>
-
+        <div class="auth-switch">
+            <a href="inicio.html">Volver al inicio de sesión</a>
         </div>
-
-    </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <script src="./js/supabase-config.js"></script>

@@ -1,0 +1,159 @@
+/* ============================================================
+   NovaFit · Sistema de diseño "Oscuro premium + lima"
+   Tokens, tipografía y base compartida por todas las pantallas.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+    /* Superficies */
+    --nf-bg: #08080b;
+    --nf-bg-soft: #0c0c11;
+    --nf-surface: #111117;
+    --nf-surface-2: #17171f;
+    --nf-surface-3: #1d1d27;
+
+    /* Líneas */
+    --nf-line: rgba(255, 255, 255, .08);
+    --nf-line-strong: rgba(255, 255, 255, .16);
+
+    /* Texto */
+    --nf-text: #f5f5f7;
+    --nf-muted: #9a9aa7;
+    --nf-muted-2: #6d6d7a;
+    --nf-ink: #0a0a0c;
+
+    /* Acento */
+    --nf-lime: #d8ff3e;
+    --nf-lime-2: #b6ea12;
+    --nf-lime-soft: rgba(216, 255, 62, .12);
+    --nf-lime-line: rgba(216, 255, 62, .38);
+
+    /* Estados */
+    --nf-danger: #ff6b81;
+    --nf-success: #7ee787;
+    --nf-info: #7cc4ff;
+
+    /* Formas */
+    --nf-radius: 22px;
+    --nf-radius-md: 16px;
+    --nf-radius-sm: 11px;
+
+    /* Sombras */
+    --nf-shadow: 0 26px 70px rgba(0, 0, 0, .5);
+    --nf-shadow-soft: 0 12px 34px rgba(0, 0, 0, .3);
+
+    /* Tipografía */
+    --nf-font-display: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+    --nf-font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--nf-font-body);
+    color: var(--nf-text);
+    background-color: var(--nf-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--nf-font-display);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.12;
+}
+
+p {
+    line-height: 1.65;
+}
+
+a {
+    color: var(--nf-lime);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #eaff8f;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+img,
+svg {
+    max-width: 100%;
+}
+
+::selection {
+    background: var(--nf-lime);
+    color: var(--nf-ink);
+}
+
+:focus-visible {
+    outline: 2px solid var(--nf-lime);
+    outline-offset: 3px;
+}
+
+/* Scrollbar discreto */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #2b2b37 transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #2b2b37;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #3c3c4b;
+    background-clip: content-box;
+}
+
+/* Aviso global (por si una página no carga su CSS propio) */
+.nf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--nf-lime-line);
+    background: var(--nf-lime-soft);
+    color: var(--nf-lime);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+    }
+}
