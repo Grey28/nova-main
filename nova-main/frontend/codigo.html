@@ -2,64 +2,49 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/codigo.css">
-    <link rel="stylesheet" href="../style/auth.css">
-
     <title>NovaFit | Verificar código</title>
 
+    <link rel="stylesheet" href="../style/theme.css">
+    <link rel="stylesheet" href="../style/auth-pages.css">
+    <link rel="stylesheet" href="../style/auth.css">
 </head>
 
 <body data-page="verify-code">
 
-    <div class="contenedor">
+    <main class="auth-card">
+        <a class="auth-brand" href="index.html" aria-label="Volver a NovaFit">
+            <span class="auth-mark">N</span>
+            <span class="auth-name">Nova<em>Fit</em></span>
+        </a>
 
-        <h1>Verificar código</h1>
-
+        <h1>Verifica tu código</h1>
         <p>
-
             Hemos enviado un código de 6 dígitos a tu correo electrónico.
-
             Escríbelo para continuar.
-
         </p>
 
         <form id="codeForm" action="verifcodigo.html">
 
             <div class="codigo" id="codeInputs">
-
                 <input type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Dígito 1" required>
                 <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 2" required>
                 <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 3" required>
                 <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 4" required>
                 <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 5" required>
                 <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 6" required>
-
             </div>
 
-            <button type="submit">
-
-                Verificar código
-
-            </button>
+            <button type="submit">Verificar código</button>
 
         </form>
 
-        <div class="reenviar">
-
+        <div class="auth-switch">
             ¿No recibiste el código?
-
-            <a href="recuperar.html">
-
-                Reenviar
-
-            </a>
-
+            <a href="recuperar.html">Reenviar</a>
         </div>
-
-    </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <script src="./js/supabase-config.js"></script>

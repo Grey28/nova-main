@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NovaFit | Mi espacio</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style/theme.css">
     <link rel="stylesheet" href="../style/dashboard.css">
     <link rel="stylesheet" href="../style/auth.css">
     <link rel="stylesheet" href="../style/asistente.css">
 </head>
 <body>
 <header class="navbar">
-  <div style="display:flex;align-items:center;gap:12px"><button class="mobile-menu" id="menuBtn"><i class="fa-solid fa-bars"></i></button><div class="logo"><div class="logo-circle">🌿</div><h2>Nova<span>Fit</span></h2></div></div>
+  <div style="display:flex;align-items:center;gap:12px"><button class="mobile-menu" id="menuBtn"><i class="fa-solid fa-bars"></i></button><div class="logo"><div class="logo-circle"><i class="fa-solid fa-bolt"></i></div><h2>Nova<span>Fit</span></h2></div></div>
   <div class="top-actions"><div class="icon-box"><i class="fa-solid fa-bell"></i></div><div class="icon-box"><i class="fa-solid fa-comments"></i></div><div class="profile"><img id="avatarImg" src="./assets/avatar-placeholder.svg" alt="Foto de perfil"><div class="profile-info"><strong id="profileName">María José</strong><br><small id="profilePlan">Miembro Premium</small></div></div></div>
 </header>
 <div class="layout">
@@ -28,7 +28,7 @@
 </nav></aside>
 <main>
 <section id="inicio" class="app-section">
-<div class="hero"><div><span class="eyebrow">Tu espacio NovaFit</span><h1>¡Hola, <span id="heroName">María José</span>! 👋</h1><p>Continúa con tu plan de entrenamiento y mantén el ritmo hacia tus objetivos.</p><a href="#rutinas" class="cta">Ver entrenamiento de hoy</a></div><div style="font-size:72px">🏃‍♀️</div></div>
+<div class="hero"><div><span class="eyebrow">Tu espacio NovaFit</span><h1>¡Hola, <span id="heroName">María José</span>! 👋</h1><p>Continúa con tu plan de entrenamiento y mantén el ritmo hacia tus objetivos.</p><a href="#rutinas" class="cta">Ver entrenamiento de hoy</a></div><div class="hero-art" aria-hidden="true"><i class="fa-solid fa-dumbbell"></i></div></div>
 <div class="grid"><div class="card"><h3>Racha actual 🔥</h3><div class="metric" id="streakMetric">7 días</div><p class="muted">Tu mejor racha este mes.</p></div><div class="card"><h3>Entrenamientos</h3><div class="metric" id="workoutsMetric">12</div><p class="muted">Completados este mes.</p></div><div class="card"><h3>Meta semanal</h3><div class="metric" id="weeklyGoalMetric">3 / 4</div><div class="progress"><span id="weeklyGoalBar" style="width:75%"></span></div></div><div class="card wide"><h3>Próxima rutina</h3><p class="muted" id="nextRoutineText">Pierna y glúteos · 45 min · Nivel intermedio</p><a class="btn" href="#rutinas">Comenzar rutina</a></div><div class="card"><h3>Hidratación</h3><div class="metric" id="hydrationMetric">1.6 L</div><p class="muted">Meta diaria: 2.0 L</p><div class="progress"><span id="hydrationBar" style="width:80%"></span></div></div></div>
 </section>
 <section id="rutinas" class="app-section"><span class="eyebrow">Entrenamiento</span><h1 class="page-title">Mis rutinas</h1><p class="subtitle">Elige una rutina y continúa con tu plan.</p><div class="grid" id="routinesGrid"><div class="card wide"><p class="muted">Cargando rutinas…</p></div></div></section>
