@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-label="NovaFit — Entrena, registra y mira tu progreso">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#03110b"/>
+      <stop offset="0.5" stop-color="#0a2e20"/>
+      <stop offset="1" stop-color="#03110b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#a7f3d0"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#22c55e" stop-opacity="0"/>
+      <stop offset="0.4" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#86efac"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22c55e" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="#22c55e" stroke-opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="340" rx="28" fill="url(#bg)"/>
+  <rect width="1280" height="340" rx="28" fill="url(#grid)"/>
+  <circle cx="1060" cy="40" r="300" fill="url(#glow)"/>
+  <circle cx="140" cy="360" r="240" fill="url(#glow)" opacity=".55"/>
+  <rect x="0.5" y="0.5" width="1279" height="339" rx="28" fill="none" stroke="#22c55e" stroke-opacity=".25"/>
+
+  <!-- Marca -->
+  <text x="80" y="104" font-family="Segoe UI, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="700" letter-spacing="6" fill="#4ade80">TU ESPACIO DE ENTRENAMIENTO</text>
+
+  <text x="76" y="204" font-family="Segoe UI, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="104" font-weight="800" letter-spacing="-2" fill="#f8fafc">Nova<tspan fill="url(#accent)">Fit</tspan></text>
+
+  <text x="82" y="252" font-family="Segoe UI, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="23" fill="#cbd5e1">Entrena, registra y mira tu progreso. Todo en un solo lugar.</text>
+
+  <!-- Pills -->
+  <g font-family="Segoe UI, system-ui, -apple-system, Helvetica, Arial, sans-serif" font-size="15" font-weight="600">
+    <rect x="82" y="282" width="92" height="34" rx="17" fill="#0e2b20" stroke="#22c55e" stroke-opacity=".45"/>
+    <text x="128" y="304" fill="#86efac" text-anchor="middle">HTML5</text>
+
+    <rect x="184" y="282" width="78" height="34" rx="17" fill="#0e2b20" stroke="#22c55e" stroke-opacity=".45"/>
+    <text x="223" y="304" fill="#86efac" text-anchor="middle">CSS3</text>
+
+    <rect x="272" y="282" width="108" height="34" rx="17" fill="#0e2b20" stroke="#22c55e" stroke-opacity=".45"/>
+    <text x="326" y="304" fill="#86efac" text-anchor="middle">JavaScript</text>
+
+    <rect x="390" y="282" width="110" height="34" rx="17" fill="#0e2b20" stroke="#22c55e" stroke-opacity=".45"/>
+    <text x="445" y="304" fill="#86efac" text-anchor="middle">Supabase</text>
+  </g>
+
+  <!-- Ilustración: progreso -->
+  <g transform="translate(760 70)">
+    <rect x="0" y="0" width="440" height="200" rx="22" fill="#062018" stroke="#22c55e" stroke-opacity=".28"/>
+    <text x="28" y="42" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700"
+          letter-spacing="3" fill="#4ade80">PROGRESO</text>
+    <text x="28" y="82" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="800" fill="#f8fafc">+18%</text>
+    <text x="112" y="82" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#94a3b8">este mes</text>
+
+    <path d="M28 160 C 80 158, 96 128, 136 132 S 200 112, 236 120 S 288 84, 324 92 S 372 62, 408 54"
+          fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="408" cy="54" r="8" fill="#86efac"/>
+    <circle cx="408" cy="54" r="16" fill="#22c55e" fill-opacity=".18"/>
+
+    <g fill="#173f30">
+      <rect x="28" y="176" width="58" height="6" rx="3"/>
+      <rect x="96" y="176" width="58" height="6" rx="3"/>
+      <rect x="164" y="176" width="58" height="6" rx="3"/>
+      <rect x="232" y="176" width="58" height="6" rx="3"/>
+      <rect x="300" y="176" width="58" height="6" rx="3"/>
+      <rect x="368" y="176" width="40" height="6" rx="3"/>
+    </g>
+  </g>
+
+  <!-- Detalle superior derecha -->
+  <g transform="translate(1130 24)">
+    <circle cx="0" cy="0" r="34" fill="#0e2b20" stroke="#22c55e" stroke-opacity=".4"/>
+    <path d="M-14 2 L-6 10 L14 -12" fill="none" stroke="#4ade80" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
