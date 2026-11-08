@@ -551,6 +551,8 @@
 
     var heightInput = $('profileHeightInput');
     if (heightInput) heightInput.value = profile.height_cm != null ? String(profile.height_cm) : '';
+
+    document.body.classList.remove('is-booting');
   }
 
   async function loadSummary() {

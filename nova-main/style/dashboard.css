@@ -134,6 +134,12 @@ body {
     font-size: 11px;
 }
 
+/* Oculta los datos personales hasta que Supabase entrega el perfil real. */
+body.is-booting .profile-info,
+body.is-booting #heroGreeting {
+    visibility: hidden;
+}
+
 /* ------------------------- Layout ------------------------- */
 
 .layout {
