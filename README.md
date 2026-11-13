@@ -276,6 +276,14 @@ Esto la hace **gratis, instantánea, privada y compatible con GitHub Pages**. Si
 
 ---
 
+## 📚 Guía de estudio
+
+¿Quieres entender cómo está construido el proyecto? La guía recorre los archivos uno por uno, explica los conceptos desde cero, muestra los flujos de datos y propone ejercicios:
+
+👉 **[docs/GUIA-ESTUDIO.md](docs/GUIA-ESTUDIO.md)**
+
+---
+
 ## 🗺 Roadmap
 
 - [x] Autenticación completa con Supabase
