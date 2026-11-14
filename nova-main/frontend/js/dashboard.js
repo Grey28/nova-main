@@ -240,11 +240,11 @@
     var lower = text.toLowerCase();
 
     if (lower.indexOf('bucket not found') !== -1) {
-      return 'No existe el bucket "avatars". Ejecuta supabase/storage-avatars.sql en el SQL Editor de Supabase.';
+      return 'No existe el bucket "avatars". Ejecuta backend/storage-avatars.sql en el SQL Editor de Supabase.';
     }
 
     if (lower.indexOf('row-level security') !== -1 || lower.indexOf('permission') !== -1) {
-      return 'El bucket existe pero faltan permisos. Ejecuta supabase/storage-avatars.sql en Supabase.';
+      return 'El bucket existe pero faltan permisos. Ejecuta backend/storage-avatars.sql en Supabase.';
     }
 
     if (lower.indexOf('payload too large') !== -1 || lower.indexOf('maximum') !== -1) {
@@ -338,7 +338,7 @@
     var text = String(message || '');
 
     if (/height_cm/i.test(text) && /column/i.test(text)) {
-      return 'Falta la columna height_cm. Ejecuta supabase/profile-height.sql en Supabase.';
+      return 'Falta la columna height_cm. Ejecuta backend/profile-height.sql en Supabase.';
     }
 
     return text;

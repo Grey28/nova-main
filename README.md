@@ -119,7 +119,6 @@ nova-main/
 │
 └── nova-main/
     ├── index.html                # Redirige a frontend/
-    ├── SUPABASE_SETUP.md         # Guía detallada de configuración
     │
     ├── frontend/
     │   ├── index.html            # Landing
@@ -146,7 +145,8 @@ nova-main/
     │   ├── asistente.css
     │   └── ...
     │
-    └── supabase/
+    └── backend/
+        ├── SUPABASE_SETUP.md       # Guía detallada de configuración
         ├── schema.sql              # Tablas, RLS, trigger y Storage
         ├── profile-height.sql      # Columna height_cm (migración)
         └── storage-avatars.sql     # Bucket y políticas de avatares
@@ -178,7 +178,7 @@ También puedes usar la extensión **Live Server** de VS Code o cualquier servid
 
 ## 🗄 Configurar Supabase
 
-La guía completa está en [`nova-main/SUPABASE_SETUP.md`](nova-main/SUPABASE_SETUP.md). Resumen:
+La guía completa está en [`nova-main/backend/SUPABASE_SETUP.md`](nova-main/backend/SUPABASE_SETUP.md). Resumen:
 
 ### 1. Credenciales del frontend
 
@@ -200,9 +200,9 @@ Ejecuta en **SQL Editor**:
 
 | Archivo | Cuándo usarlo |
 | --- | --- |
-| [`supabase/schema.sql`](nova-main/supabase/schema.sql) | Proyecto nuevo: tablas, RLS, trigger de perfil y bucket |
-| [`supabase/profile-height.sql`](nova-main/supabase/profile-height.sql) | Si `profiles` ya existía sin la columna `height_cm` |
-| [`supabase/storage-avatars.sql`](nova-main/supabase/storage-avatars.sql) | Si la subida de fotos falla con “Bucket not found” |
+| [`backend/schema.sql`](nova-main/backend/schema.sql) | Proyecto nuevo: tablas, RLS, trigger de perfil y bucket |
+| [`backend/profile-height.sql`](nova-main/backend/profile-height.sql) | Si `profiles` ya existía sin la columna `height_cm` |
+| [`backend/storage-avatars.sql`](nova-main/backend/storage-avatars.sql) | Si la subida de fotos falla con “Bucket not found” |
 
 Tablas creadas: `profiles`, `routines`, `workouts`, `nutrition_logs` y `progress_entries`, todas protegidas con RLS (cada usuario solo ve sus filas).
 
@@ -235,7 +235,7 @@ _site/
 └── index.html
 ```
 
-El `README.md`, `SUPABASE_SETUP.md` y la carpeta `supabase/` **no** se publican: se quedan en el repositorio.
+El `README.md`, la carpeta `backend/` (con `SUPABASE_SETUP.md` y los SQL) **no** se publican: se quedan en el repositorio.
 
 Para ver el estado:
 
@@ -273,14 +273,6 @@ Elegir la mejor respuesta + acciones
 ```
 
 Esto la hace **gratis, instantánea, privada y compatible con GitHub Pages**. Si la pregunta no coincide con ninguna regla, ofrece una respuesta de ayuda con las opciones disponibles.
-
----
-
-## 📚 Guía de estudio
-
-¿Quieres entender cómo está construido el proyecto? La guía recorre los archivos uno por uno, explica los conceptos desde cero, muestra los flujos de datos y propone ejercicios:
-
-👉 **[docs/GUIA-ESTUDIO.md](docs/GUIA-ESTUDIO.md)**
 
 ---
 

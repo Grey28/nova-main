@@ -11,7 +11,7 @@ Esta guía explica cómo conectar el frontend de NovaFit con Supabase como backe
 ## 2. Crear las tablas y políticas
 
 1. En el panel del proyecto ve a **SQL Editor**.
-2. Abre el archivo `supabase/schema.sql` de este repositorio.
+2. Abre el archivo `backend/schema.sql` de este repositorio.
 3. Copia todo su contenido, pégalo en el editor y pulsa **Run**.
 
 Esto crea:
@@ -24,7 +24,7 @@ Esto crea:
 
 También activa **RLS** (Row Level Security) para que cada usuario solo pueda ver y modificar sus propios datos, y crea un perfil con tres rutinas iniciales cada vez que alguien se registra.
 
-Para las fotos de perfil, ejecuta también `supabase/storage-avatars.sql`. Ese script crea el bucket público `avatars` y las políticas para que cada usuario solo pueda subir, actualizar o borrar su propia foto.
+Para las fotos de perfil, ejecuta también `backend/storage-avatars.sql`. Ese script crea el bucket público `avatars` y las políticas para que cada usuario solo pueda subir, actualizar o borrar su propia foto.
 
 ## 3. Configurar las credenciales del frontend
 
@@ -111,7 +111,7 @@ frontend/js/supabase-config.js   -> URL y anon key
 frontend/js/supabase-client.js   -> crea el cliente window.novaDb
 frontend/js/auth.js              -> login, registro, recuperación y nueva contraseña
 frontend/js/dashboard.js         -> sesión, perfil y datos del dashboard
-supabase/schema.sql              -> tablas, índices, triggers y políticas RLS
+backend/schema.sql              -> tablas, índices, triggers y políticas RLS
 style/auth.css                   -> mensajes y avisos de autenticación
 ```
 
