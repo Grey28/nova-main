@@ -1,0 +1,10 @@
+# Dependencias / sistema
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Borradores locales (versiones antiguas, no forman parte del sitio)
+nova-main/borradores/
+
+# Capturas de vista previa (uso local)
+assets/preview/
