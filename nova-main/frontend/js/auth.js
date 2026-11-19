@@ -92,6 +92,23 @@
     window.location.href = path;
   }
 
+  function hasCompletedProfileGenerator(user) {
+    if (user && user.user_metadata && user.user_metadata.profile_generator_done) {
+      return true;
+    }
+    try {
+      return !!(user && localStorage.getItem('novafit_generator_done:' + user.id) === '1');
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function pathAfterAuth(user) {
+    return hasCompletedProfileGenerator(user)
+      ? 'dashboard.html#inicio'
+      : 'generador-perfiles.html';
+  }
+
   function requireSupabase() {
     if (window.NOVAFIT_CONFIGURED && db) return true;
 
@@ -109,7 +126,7 @@
     if (!db) return;
     db.auth.getSession().then(function (result) {
       if (result.data && result.data.session) {
-        redirect('dashboard.html#inicio');
+        redirect(pathAfterAuth(result.data.session.user));
       }
     });
   }
@@ -137,7 +154,7 @@
         return;
       }
 
-      redirect('dashboard.html#inicio');
+      redirect(pathAfterAuth(result.data.user));
     });
   }
 
@@ -178,7 +195,7 @@
       }
 
       if (result.data && result.data.session) {
-        redirect('dashboard.html#inicio');
+        redirect(pathAfterAuth(result.data.user));
         return;
       }
 

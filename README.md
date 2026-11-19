@@ -75,6 +75,12 @@ Todo funciona directamente en el navegador (HTML, CSS y JavaScript puro) y usa *
 - **Comunidad:** reto semanal y ranking (vista de ejemplo).
 - **Mi perfil:** datos personales, objetivo, nivel, altura y avatar.
 
+### 🧭 Primer inicio de sesión
+- Tras el **primer login**, se abre el **generador de perfiles** antes del dashboard.
+- Resume objetivo, nivel y medidas disponibles; excluye siempre la información médica (fase 3).
+- Permite **imprimir/guardar PDF**, **exportar JSON** y **continuar al dashboard**.
+- El estado “ya completado” se guarda en el usuario y en el navegador; en logins posteriores entra directo al dashboard.
+
 ### ⚖️ Peso y primeros pasos
 - Al entrar por primera vez, un modal pide **peso y altura**.
 - El peso se guarda como la **primera medición** de progreso.
@@ -127,6 +133,7 @@ nova-main/
     │   ├── recuperar.html        # Pedir código
     │   ├── codigo.html           # Verificar código
     │   ├── verifcodigo.html      # Nueva contraseña
+    │   ├── generador-perfiles.html # Generador (primer inicio de sesión)
     │   ├── dashboard.html        # Panel principal
     │   ├── navbar.html           # Navbar reutilizable
     │   ├── assets/
@@ -135,6 +142,7 @@ nova-main/
     │       ├── supabase-config.js    # URL + publishable key
     │       ├── supabase-client.js    # Crea window.novaDb
     │       ├── auth.js               # Login, registro y recuperación
+    │       ├── generador-perfiles.js # Lógica del generador de perfiles
     │       ├── dashboard.js          # Perfil, datos y progreso
     │       └── asistente.js          # Asistente Nova
     │
@@ -143,6 +151,7 @@ nova-main/
     │   ├── auth.css
     │   ├── dashboard.css
     │   ├── asistente.css
+    │   ├── generador-perfiles.css
     │   └── ...
     │
     └── backend/

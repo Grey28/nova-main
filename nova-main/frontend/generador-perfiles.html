@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123d32">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/favicon.png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <title>NovaFit | Generador de perfiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style/generador-perfiles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="dashboard.html#inicio" aria-label="NovaFit dashboard">
+        <span class="brand-mark">N</span>
+        <span>NOVAFIT<span class="brand-dot">.</span></span>
+      </a>
+      <span class="topbar-label">CENTRO DE EVALUACIÓN</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">TU PUNTO DE PARTIDA</p>
+          <h1>Generador de <span>perfiles</span></h1>
+          <p class="hero-copy">Organiza la información de la evaluación y construye una visión general para orientar el acompañamiento.</p>
+        </div>
+        <div class="hero-icon" aria-hidden="true">✦</div>
+      </section>
+
+      <section class="toolbar card">
+        <div>
+          <h2>Datos de evaluación</h2>
+          <p id="sync-status" class="muted">Revisando información guardada en este navegador…</p>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-light" id="refresh-btn" type="button">↻ Actualizar datos</button>
+          <button class="btn btn-primary" id="generate-btn" type="button">Generar perfil <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="notice" id="data-notice" aria-live="polite">
+        <span class="notice-icon">ⓘ</span>
+        <div><strong>Importante</strong><p>Este generador es un prototipo local. No reemplaza una valoración profesional. Los datos médicos no se leen ni se muestran aquí.</p></div>
+      </section>
+
+      <section class="summary-grid" id="summary-grid">
+        <article class="metric-card"><span class="metric-label">FASES ENCONTRADAS</span><strong id="phases-count">0/7</strong><small>Con información disponible</small></article>
+        <article class="metric-card"><span class="metric-label">OBJETIVO PRINCIPAL</span><strong class="metric-text" id="main-goal">Pendiente</strong><small>Según la evaluación</small></article>
+        <article class="metric-card"><span class="metric-label">NIVEL DE ACTIVIDAD</span><strong class="metric-text" id="sport-level">Pendiente</strong><small>Experiencia deportiva</small></article>
+        <article class="metric-card"><span class="metric-label">ESTADO DEL PERFIL</span><strong class="metric-text" id="profile-state">Sin generar</strong><small>Lectura orientativa</small></article>
+      </section>
+
+      <section class="profile-layout" id="profile-area">
+        <div class="section-heading">
+          <div><p class="eyebrow">RESUMEN PERSONALIZADO</p><h2>Tu perfil NovaFit</h2></div>
+          <span class="status-pill" id="profile-badge">Esperando datos</span>
+        </div>
+
+        <div class="profile-grid">
+          <article class="profile-card">
+            <div class="card-heading"><span class="icon-bubble">◉</span><div><h3>Perfil corporal</h3><p>Medidas disponibles y referencia general</p></div></div>
+            <div id="body-content" class="card-content empty">Genera el perfil para visualizar los datos disponibles.</div>
+          </article>
+          <article class="profile-card">
+            <div class="card-heading"><span class="icon-bubble">⌁</span><div><h3>Perfil deportivo</h3><p>Experiencia, actividad y metas</p></div></div>
+            <div id="sport-content" class="card-content empty">Aún no hay información procesada.</div>
+          </article>
+          <article class="profile-card">
+            <div class="card-heading"><span class="icon-bubble">♡</span><div><h3>Hábitos y nutrición</h3><p>Preferencias y hábitos reportados</p></div></div>
+            <div id="nutrition-content" class="card-content empty">Aún no hay información procesada.</div>
+          </article>
+          <article class="profile-card">
+            <div class="card-heading"><span class="icon-bubble">☾</span><div><h3>Descanso y recuperación</h3><p>Rutina de sueño y recuperación</p></div></div>
+            <div id="recovery-content" class="card-content empty">Aún no hay información procesada.</div>
+          </article>
+          <article class="profile-card">
+            <div class="card-heading"><span class="icon-bubble">◷</span><div><h3>Disponibilidad</h3><p>Tiempo, horarios y recursos</p></div></div>
+            <div id="availability-content" class="card-content empty">Aún no hay información procesada.</div>
+          </article>
+          <article class="profile-card safety-card">
+            <div class="card-heading"><span class="icon-bubble">盾</span><div><h3>Revisión de seguridad</h3><p>Control previo al diseño de actividades</p></div></div>
+            <div id="safety-content" class="card-content"><p class="safe-note">La información de salud de la fase 3 no se importa ni se almacena en este generador. Un profesional debe revisar esa fase por separado antes de recomendar ejercicios.</p></div>
+          </article>
+        </div>
+
+        <article class="recommendation-card">
+          <div class="recommendation-title"><span>✧</span><div><p class="eyebrow">SIGUIENTE PASO</p><h3>Orientación inicial</h3></div></div>
+          <div id="recommendation-content"><p>Cuando generes el perfil, aparecerá una orientación general basada únicamente en los datos no médicos disponibles.</p></div>
+        </article>
+
+        <div class="footer-actions">
+          <button class="btn btn-primary" id="continue-btn" type="button">Continuar al dashboard <span>→</span></button>
+          <button class="btn btn-light" id="print-btn" type="button">Imprimir / Guardar PDF</button>
+          <button class="btn btn-light" id="export-btn" type="button">Exportar resumen JSON</button>
+        </div>
+      </section>
+    </main>
+    <footer>NovaFit · Bienestar con propósito <span>Hecho para avanzar a tu ritmo.</span></footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="./js/supabase-config.js"></script>
+  <script src="./js/supabase-client.js"></script>
+  <script src="./js/generador-perfiles.js"></script>
+</body>
+</html>
